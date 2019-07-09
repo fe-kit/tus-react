@@ -1,0 +1,11 @@
+body {
+  color: red;
+  display: flex;
+  button {
+    border: solid 1px red;
+    background: url(../../static/loginbg.png);
+  }
+  -webkit-font-smoothing: antialiased;
+  transform: translate(10px, 10px);
+  background: url(../../static/logo.png);
+}
