@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  background-color: rgb(250, 251, 252);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  padding-top: 24px;
+  border-bottom: 1px solid rgb(225, 228, 232);
+  a {
+    margin: 0 12px;
+    font-size: 16px;
+
+    color: #390;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    &.current {
+      font-weight: 600;
+    }
+  }
+}

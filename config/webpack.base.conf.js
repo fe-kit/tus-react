@@ -2,8 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const { assetsPath } = require('./utils');
@@ -43,9 +41,11 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader:
+              mode === 'development'
+                ? 'style-loader'
+                : MiniCssExtractPlugin.loader
           },
-          // { loader: 'style-loader' },
           {
             loader: 'css-loader'
           },
@@ -89,43 +89,7 @@ module.exports = {
       },
       canPrint: true
     }),
-    new BundleAnalyzerPlugin(),
     new ManifestPlugin(),
     new webpack.HotModuleReplacementPlugin()
-  ],
-  optimization: {
-    nodeEnv: 'production',
-    runtimeChunk: 'single',
-    splitChunks: {
-      minSize: 1,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      name: false,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/](react|react-dom|react-redux|redux|react-router-dom|redux-actions|redux-thunk)/,
-          name: 'vendors',
-          reuseExistingChunk: true,
-          chunks: 'initial',
-          priority: 3
-        },
-        vendorAsync: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendorAsync',
-          reuseExistingChunk: true,
-          chunks: 'async',
-          priority: 2
-        },
-        commons: {
-          name: 'commons',
-          reuseExistingChunk: true,
-          // minChunks: 2,
-          chunks: 'initial',
-          priority: 1
-        }
-      },
-      chunks: 'all'
-    }
-  }
+  ]
 };

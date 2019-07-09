@@ -1,13 +1,14 @@
 {
-  "name": "helloredux",
+  "name": "tus-react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --hot --inline --progress --colors --config config/webpack.prod.conf.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode=development --hot --inline --progress --colors --config config/webpack.dev.conf.js",
+    "prod": "cross-env NODE_ENV=production webpack-dev-server --mode=production --hot --inline --progress --colors --config config/webpack.prod.conf.js",
     "start": "npm run dev",
     "build": "webpack --mode=production --progress --colors --config config/webpack.prod.conf.js",
-    "analyz": "NODE_ENV=production npm_config_report=true npm run build"
+    "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "@babel/runtime": "^7.4.5",
     "autoprefixer": "^9.6.0",
     "babel-loader": "^8.0.6",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
     "cssnano": "^4.1.10",
     "file-loader": "^4.0.0",
@@ -47,9 +49,9 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "reactable": "^1.1.0",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   }
 }

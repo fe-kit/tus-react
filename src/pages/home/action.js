@@ -1,16 +1,19 @@
 import { createAction } from 'redux-actions';
-
-export const getAction = createAction('home/get');
 export const addAction = createAction('home/add');
 
+export const asyncAdd = () => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(
+        addAction({
+          amount: 1
+        })
+      );
+    }, 1000);
+  };
+};
 
-export const onAddButton = () => {
-    return dispatch => {
-        setTimeout(() => {
-            dispatch(addAction({
-                amount: 10
-            }));
-        }, 1000)
-        
-    }
-}
+export const syncAdd = () =>
+  addAction({
+    amount: 1
+  });

@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux'
-import home from './pages/home/reducer'
-import detail from './pages/detail/reducer'
+import { combineReducers } from 'redux';
+import home from './pages/home/reducer';
+import about from './pages/about/reducer';
 
 export default combineReducers({
-    home,
-    detail
-})
+  home,
+  about
+});
