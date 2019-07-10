@@ -1,9 +1,7 @@
 const merge = require('webpack-merge');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+
 const baseWebpackConf = require('./webpack.base.conf');
 
-baseWebpackConf.plugins.push(new BundleAnalyzerPlugin());
 module.exports = merge(baseWebpackConf, {
   devtool: 'inline-source-map',
   devServer: {
@@ -13,6 +11,7 @@ module.exports = merge(baseWebpackConf, {
     inline: true, // 设置为true，当源文件改变时会自动刷新页面
     hot: true, // 模块热更新，取决于HotModuleReplacementPlugin
     host: '127.0.0.1', // 设置默认监听域名，如果省略，默认为“localhost”
+    open: true,
     port: 8080
   }
 });

@@ -1,8 +1,13 @@
 const path = require('path');
 const merge = require('webpack-merge');
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const baseWebpackConf = require('./webpack.base.conf');
 const { assetsPath } = require('./utils');
-
+if (process.env.npm_config_report) {
+  baseWebpackConf.plugins.push(new BundleAnalyzerPlugin());
+}
 module.exports = merge(baseWebpackConf, {
   devtool: 'source-map',
   output: {
