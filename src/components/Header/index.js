@@ -4,18 +4,18 @@ import './style.scss';
 const history = [
   {
     pathname: '/',
-    name: 'Home'
+    name: 'Home',
   },
   {
     pathname: '/about',
-    name: 'About'
-  }
+    name: 'About',
+  },
 ];
 function renderNav(pathname) {
-  return history.map((item) => {
+  return history.map((item, index) => {
     const className = item.pathname === pathname ? 'current' : '';
     return (
-      <a href={`#${item.pathname}`} className={className}>
+      <a key={`item-${index}`} href={`#${item.pathname}`} className={className}>
         {item.name}
       </a>
     );

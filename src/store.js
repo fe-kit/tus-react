@@ -9,4 +9,9 @@ const middleware = composeWithDevTools(
   applyMiddleware(thunk, loggerMiddleware)
 );
 
-export default createStore(reducer, middleware);
+const initState = {
+  home: { counter: 10 },
+  about: { counter: 10 }
+};
+
+export default createStore(reducer, initState, middleware);
