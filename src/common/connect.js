@@ -1,7 +1,8 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-const decorator = (mapStateToProps, mapDispatchToProps) => {
-    return connect(mapStateToProps, mapDispatchToProps)
-}
+const decorator = (mapStateToProps, mapDispatchToProps) => connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
 
-export default decorator
+export default decorator;

@@ -1,5 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
+
+const propTypes = {
+  pathname: PropTypes.string.isRequired,
+};
 
 const history = [
   {
@@ -12,10 +17,10 @@ const history = [
   },
 ];
 function renderNav(pathname) {
-  return history.map((item, index) => {
+  return history.map((item) => {
     const className = item.pathname === pathname ? 'current' : '';
     return (
-      <a key={`item-${index}`} href={`#${item.pathname}`} className={className}>
+      <a key={item.pathname} href={`#${item.pathname}`} className={className}>
         {item.name}
       </a>
     );
@@ -25,3 +30,5 @@ function renderNav(pathname) {
 export default function Header({ pathname }) {
   return <header className="header">{renderNav(pathname)}</header>;
 }
+
+Header.propTypes = propTypes;

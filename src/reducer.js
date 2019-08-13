@@ -4,13 +4,14 @@ import about from './pages/about/reducer';
 
 const appReducers = combineReducers({
   home,
-  about
+  about,
 });
 const rootReducers = (state, action) => {
+  let newState = state;
   if (action.type === 'root/reset') {
-    state = { ...state, home: { counter: 0 } };
+    newState = { ...state, home: { counter: 0 } };
   }
-  return appReducers(state, action);
+  return appReducers(newState, action);
 };
 
 export default rootReducers;

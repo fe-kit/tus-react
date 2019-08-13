@@ -1,36 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import connect from '../../common/connect';
 import * as Actions from './action';
-import { rootReset } from '../../action';
+import globalActions from '../../action';
 import Header from '../../components/Header';
 import logo from '../../../static/logo.png';
 import './style.scss';
 
+const propTypes = {
+  location: PropTypes.object.isRequired,
+  syncAdd: PropTypes.func.isRequired,
+  asyncAdd: PropTypes.func.isRequired,
+  home: PropTypes.object.isRequired,
+  reset: PropTypes.func.isRequired,
+};
 @connect(
   (state) => ({
-    ...state
+    ...state,
   }),
   {
     ...Actions,
-    rootReset
-  }
+    ...globalActions,
+  },
 )
-export default class Home extends React.Component {
+class Home extends React.Component {
   render() {
+    const {
+      syncAdd, asyncAdd, reset, home: { counter }, location,
+    } = this.props;
     return (
       <div className="home">
-        <Header {...this.props.location} />
+        <Header {...location} />
         <img className="logo" alt="logo" src={logo} />
         <h1>Welcome to tus-cli app!</h1>
-        <button onClick={() => this.props.syncAdd()}> sync </button>：{' '}
-        {this.props.home.counter}
+        <button type="button" onClick={() => syncAdd()}> sync </button>
+        {counter}
         <br />
-        <button onClick={() => this.props.asyncAdd()}> async </button>：
-        {this.props.home.counter}
+        <button type="button" onClick={() => asyncAdd()}> async </button>
+        {counter}
         <button
+          type="button"
           onClick={() => {
-            console.info(this);
-            this.props.rootReset();
+            reset();
           }}
         >
           reset
@@ -39,3 +50,6 @@ export default class Home extends React.Component {
     );
   }
 }
+
+export default Home;
+Home.propTypes = propTypes;
