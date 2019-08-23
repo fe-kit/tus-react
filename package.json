@@ -6,7 +6,7 @@
   "scripts": {
     "server": "cross-env NODE_ENV=development webpack-dev-server --mode=development --hot --inline --progress --colors --config config/webpack.dev.conf.js",
     "prod": "cross-env NODE_ENV=production webpack-dev-server --mode=production --hot --inline --progress --colors --config config/webpack.prod.conf.js",
-    "start": "npm run dev",
+    "start": "yarn run server",
     "build": "webpack --mode=production --progress --colors --config config/webpack.prod.conf.js",
     "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build",
     "precommit-msg": "echo 'Pre-commit checks.........' && exit 0",

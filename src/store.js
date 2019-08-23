@@ -17,9 +17,5 @@ if (process.env.NODE_ENV === 'production') {
   );
 }
 
-const initState = {
-  home: { counter: 10 },
-  about: { counter: 10 },
-};
 
-export default createStore(reducer, initState, middleware);
+export default createStore(reducer, {}, middleware);

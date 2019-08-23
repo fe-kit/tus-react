@@ -20,8 +20,10 @@ module.exports = {
   plugins: ['react'],
   extends: 'airbnb',
   rules: {
+    "no-restricted-syntax": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-props-no-spreading": 0,
+    "react/state-in-constructor": [1, 'always'],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 };
